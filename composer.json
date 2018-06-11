@@ -2,6 +2,7 @@
   "name": "jeffersonassilva/vcs-php",
   "type": "library",
   "description": "Public VCS",
+  "keywords": ["vcs", "php", "version"],
   "version": "0.1",
   "authors": [
     {
@@ -15,8 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "VcsPHP\\": "src/VcsPHP/"
+      "Jeffersonassilva\\VcsPHP\\": "src/"
     }
-  },
-  "minimum-stability": "stable"
+  }
 }
