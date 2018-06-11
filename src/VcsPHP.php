@@ -5,10 +5,28 @@ namespace Jeffersonassilva\VcsPHP;
 class VcsPHP
 {
     /**
-     * @return string
+     * Check it if vcs is GIT
+     * @param string $dir Document root of project
+     * @return bool
      */
-    public static function show()
+    public static function isGIT($dir = null)
     {
-        return 'Hello World';
+        $root = $dir ? $dir : $_SERVER["DOCUMENT_ROOT"] . $_SERVER["REQUEST_URI"];
+        if (is_dir($root . "/.git")) {
+            return true;
+        }
+    }
+
+    /**
+     * Check it if vcs is SVN
+     * @param string $dir Document root of project
+     * @return bool
+     */
+    public static function isSVN($dir = null)
+    {
+        $root = $dir ? $dir : $_SERVER["DOCUMENT_ROOT"] . $_SERVER["REQUEST_URI"];
+        if (is_dir($root . "/.svn")) {
+            return true;
+        }
     }
 }
