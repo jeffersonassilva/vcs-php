@@ -1,7 +1,7 @@
 vcs-php
 ================
 
-PHP >= 5.4
+PHP >= 5.6
 
 Display the code version of the project.
 
@@ -25,12 +25,13 @@ echo VcsPHP::branch();
 
 ### Functions list
 
-Method                                                   | Description
--------------------------------------------------------- | --------------------------------------------------
-`isGIT($dir = '')`                                       | Check it if vcs is GIT
-`isSVN($dir = '')`                                       | Check it if vcs is SVN
-`branch()`                                               | Show the branch name
-`tag()`                                                  | Show the tag name
+Method             | Description            | GIT / SVN
+------------------ | ---------------------- | --------------------
+`isGIT($dir = '')` | Check it if vcs is GIT | GIT
+`isSVN($dir = '')` | Check it if vcs is SVN | SVN
+`branch()`         | Show the branch name   | GIT
+`tag()`            | Show the tag name      | GIT
+`revision()`       | Show the revision code | GIT
 
 Author
 -------
