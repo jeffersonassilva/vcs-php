@@ -30,6 +30,7 @@ Method                                                   | Description
 `isGIT($dir = '')`                                       | Check it if vcs is GIT
 `isSVN($dir = '')`                                       | Check it if vcs is SVN
 `branch()`                                               | Show the branch name
+`tag()`                                                  | Show the tag name
 
 Author
 -------
