@@ -34,7 +34,8 @@ class VcsPHP
      * Show the branch name
      * @return string
      */
-    public static function branch(){
+    public static function branch()
+    {
         exec("git rev-parse --abbrev-ref HEAD", $branchName);
         return current($branchName);
     }
@@ -43,8 +44,19 @@ class VcsPHP
      * Show the tag name
      * @return string
      */
-    public static function tag(){
+    public static function tag()
+    {
         exec("git describe --tags --abbrev=0", $tagName);
         return array_pop($tagName);
+    }
+
+    /**
+     * Show the revision code
+     * @return string
+     */
+    public static function revision()
+    {
+        exec("git log -1 --pretty=format:'%h'", $revision);
+        return current($revision);
     }
 }
