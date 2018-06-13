@@ -1,0 +1,22 @@
+{
+  "name": "jeffersonassilva/vcs-php",
+  "type": "library",
+  "description": "Public VCS",
+  "keywords": ["vcs", "php", "version"],
+  "version": "0.1",
+  "authors": [
+    {
+      "name": "Jefferson Alessandro",
+      "email": "jeffersonassilva@gmail.com",
+      "role": "creator"
+    }
+  ],
+  "require": {
+    "php": ">5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jeffersonassilva\\VcsPHP\\": "src/"
+    }
+  }
+}
