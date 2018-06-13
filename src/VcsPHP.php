@@ -29,4 +29,13 @@ class VcsPHP
             return true;
         }
     }
+
+    /**
+     * Show the branch name
+     * @return string
+     */
+    public static function branch(){
+        exec("git rev-parse --abbrev-ref HEAD", $branchName);
+        return current($branchName);
+    }
 }
