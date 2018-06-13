@@ -38,4 +38,13 @@ class VcsPHP
         exec("git rev-parse --abbrev-ref HEAD", $branchName);
         return current($branchName);
     }
+
+    /**
+     * Show the tag name
+     * @return string
+     */
+    public static function tag(){
+        exec("git describe --tags --abbrev=0", $tagName);
+        return array_pop($tagName);
+    }
 }
