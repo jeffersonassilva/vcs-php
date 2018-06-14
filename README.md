@@ -8,10 +8,20 @@ Display the code version of the project.
 Installation
 ------------
 
-Use [Composer] to install the package (dev-master `for a while`):
+Use [Composer] to install the package.
+
+Update your composer.json
 
 ```
-$ composer require jeffersonassilva/vcs-php:dev-master
+"require": {
+    "jeffersonassilva/vcs-php": "*"
+}
+```
+
+or use composer's require command:
+
+```
+$ composer require jeffersonassilva/vcs-php
 ```
 
 Example
@@ -36,7 +46,7 @@ Method             | Description            | GIT / SVN
 Author
 -------
 
-* [Jefferson Alessandro Santos da Silva] - [@jeffersonassilva]
+* Jefferson Alessandro Santos da Silva - [@jeffersonassilva]
 
 Contribute
 ----------
