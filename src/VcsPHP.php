@@ -12,9 +12,7 @@ class VcsPHP
     public static function isGIT($dir = null)
     {
         $root = $dir ? $dir : $_SERVER["DOCUMENT_ROOT"] . $_SERVER["REQUEST_URI"];
-        if (is_dir($root . "/.git")) {
-            return true;
-        }
+        return is_dir($root . "/.git") ? true : false;
     }
 
     /**
@@ -25,9 +23,7 @@ class VcsPHP
     public static function isSVN($dir = null)
     {
         $root = $dir ? $dir : $_SERVER["DOCUMENT_ROOT"] . $_SERVER["REQUEST_URI"];
-        if (is_dir($root . "/.svn")) {
-            return true;
-        }
+        return is_dir($root . "/.svn") ? true : false;
     }
 
     /**
