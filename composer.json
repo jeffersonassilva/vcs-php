@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Jeffersonassilva\\VcsPHP\\": "src/"
+      "jeffersonassilva\\VcsPHP\\": "src/"
     }
   }
 }

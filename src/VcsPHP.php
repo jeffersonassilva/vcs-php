@@ -1,6 +1,6 @@
 <?php
 
-namespace Jeffersonassilva\VcsPHP;
+namespace jeffersonassilva\VcsPHP;
 
 class VcsPHP
 {

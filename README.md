@@ -18,7 +18,7 @@ Example
 -------
 
 ```php
-use Jeffersonassilva\VcsPHP\VcsPHP;
+use jeffersonassilva\VcsPHP\VcsPHP;
 
 echo VcsPHP::branch();
 ```
