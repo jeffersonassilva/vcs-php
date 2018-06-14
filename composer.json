@@ -3,7 +3,6 @@
   "type": "library",
   "description": "Public VCS",
   "keywords": ["vcs", "php", "version"],
-  "version": "0.1",
   "authors": [
     {
       "name": "Jefferson Alessandro",
