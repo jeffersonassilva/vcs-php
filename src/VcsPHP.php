@@ -48,20 +48,22 @@ class VcsPHP
 
     /**
      * Show the revision code
-     * @return string
+     * @param bool $long Optional type of revision, defatul is short
+     * @return mixed
      */
-    public static function revision()
+    public static function revision($long = false)
     {
-        exec("git log -1 --pretty=format:'%h'", $revision);
+        $format = $long ? 'H' : 'h';
+        exec("git log -1 --pretty=format:'%$format'", $revision);
         return current($revision);
     }
 
     /**
      * Show the current date commit
-     * @param string $format Optional format of date, default is american format '%Y/%m/%d'
+     * @param string $format Optional format of date, default is american format '%Y-%m-%d %H:%M:%S'
      * @return string
      */
-    public static function dateCommit($format = '%Y/%m/%d')
+    public static function dateCommit($format = '%Y-%m-%d %H:%M:%S')
     {
         exec("git log -1 --pretty='format:%cd' --date=format:'$format'", $dateCommit);
         return current($dateCommit);

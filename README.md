@@ -35,14 +35,14 @@ echo VcsPHP::branch();
 
 ### Functions list
 
-Method                   | Description | GIT / SVN
------------------------- | ------------| --------------------
-`isGIT($dir='')`         | Check it if vcs is GIT | GIT
-`isSVN($dir='')`         | Check it if vcs is SVN | SVN
-`branch()`               | Show the branch name | GIT
-`tag()`                  | Show the tag name | GIT
-`revision()`             | Show the revision code | GIT
-`dateCommit($format='')` | Show the current date commit. Optional American format '%Y/%m/%d' is default value. | GIT
+Method                                    | Description | GIT / SVN
+----------------------------------------- | ------------| --------------------
+`isGIT($dir=null)`                        | Check it if vcs is GIT. | GIT
+`isSVN($dir=null)`                        | Check it if vcs is SVN. | SVN
+`branch()`                                | Show the current branch name | GIT
+`tag()`                                   | Show the current tag name | GIT
+`revision($long=false)`                   | Show the current revision code. Default value is **false**. | GIT
+`dateCommit($format='%Y-%m-%d %H:%M:%S')` | Show the current date commit. Default value is the american format **'%Y-%m-%d %H:%M:%S'**. | GIT
 
 Author
 -------
