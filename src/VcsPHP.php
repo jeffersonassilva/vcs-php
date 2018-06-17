@@ -59,7 +59,7 @@ class VcsPHP
     }
 
     /**
-     * Show the current date commit
+     * Show the date commit
      * @param string $format Optional format of date, default is american format '%Y-%m-%d %H:%M:%S'
      * @return string
      */
@@ -67,5 +67,15 @@ class VcsPHP
     {
         exec("git log -1 --pretty='format:%cd' --date=format:'$format'", $dateCommit);
         return current($dateCommit);
+    }
+
+    /**
+     * Show the author commit
+     * @return string
+     */
+    public static function authorCommit()
+    {
+        exec("git log -1 --pretty='format:%an'", $authorCommit);
+        return current($authorCommit);
     }
 }
