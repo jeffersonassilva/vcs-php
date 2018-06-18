@@ -24,7 +24,16 @@ or use composer's require command:
 $ composer require jeffersonassilva/vcs-php
 ```
 
-Example
+Required
+-------
+
+It is necessary that your variable **$_SERVER["DOCUMENT_ROOT"]** is correct, based in your project path. If it is not, you can pass the path as a parameter in all functions.
+
+```php
+echo VcsPHP::isGIT('/var/www/my-project');
+```
+
+Usage Examples
 -------
 
 ```php
@@ -33,17 +42,17 @@ use jeffersonassilva\VcsPHP\VcsPHP;
 echo VcsPHP::branch();
 ```
 
-### Functions list
+### Functions
 
-Method                                    | Description | GIT/SVN
------------------------------------------ | ------------| --------------------
-`isGIT($dir=null)`                        | Check it if vcs is GIT. | GIT
-`isSVN($dir=null)`                        | Check it if vcs is SVN. | SVN
-`branch()`                                | Show the current branch name | GIT
-`tag()`                                   | Show the current tag name | GIT
-`revision($long=false)`                   | Show the current revision code.<br />Default value is **false**. | GIT
-`dateCommit($format='%Y-%m-%d %H:%M:%S')` | Show the current date commit.<br />Default value is the american format **'%Y-%m-%d %H:%M:%S'**. | GIT
-`authorCommit()`                          | Show the current author commit. | GIT
+Method                                                                   | Description             | GIT/SVN
+------------------------------------------------------------------------ | ----------------------- | :--------------------:
+`isGIT([string $dir = null])`                                            | Check it if vcs is GIT. | GIT
+`isSVN([string $dir = null])`                                            | Check it if vcs is SVN. | SVN
+`branch([string $dir = null])`                                           | Show the branch name    | GIT
+`tag([string $dir = null])`                                              | Show the tag name       | GIT
+`revision([bool $long = false], [string $dir = null])`                   | Show the revision code. | GIT
+`dateCommit(string $format = '%Y-%m-%d %H:%M:%S', [string $dir = null])` | Show the date commit.   | GIT
+`authorCommit([string $dir = null])`                                     | Show the author commit. | GIT
 
 Author
 -------

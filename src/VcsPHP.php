@@ -5,77 +5,94 @@ namespace jeffersonassilva\VcsPHP;
 class VcsPHP
 {
     /**
+     * @param string $dir Directory's path of project
+     * @return string
+     */
+    private function documentRoot($dir = null)
+    {
+        return $dir ? $dir : $_SERVER["DOCUMENT_ROOT"];
+    }
+
+    /**
      * Check it if vcs is GIT
-     * @param string $dir Document root of project
+     * @param string $dir Directory's path of project
      * @return bool
      */
     public static function isGIT($dir = null)
     {
-        $root = $dir ? $dir : $_SERVER["DOCUMENT_ROOT"] . $_SERVER["REQUEST_URI"];
-        return is_dir($root . "/.git") ? true : false;
+        return is_dir(VcsPHP::documentRoot($dir) . "/.git") ? true : false;
     }
 
     /**
      * Check it if vcs is SVN
-     * @param string $dir Document root of project
+     * @param string $dir Directory's path of project
      * @return bool
      */
     public static function isSVN($dir = null)
     {
-        $root = $dir ? $dir : $_SERVER["DOCUMENT_ROOT"] . $_SERVER["REQUEST_URI"];
-        return is_dir($root . "/.svn") ? true : false;
+        return is_dir(VcsPHP::documentRoot($dir) . "/.svn") ? true : false;
     }
 
     /**
      * Show the branch name
+     * @param string $dir Directory's path of project
      * @return string
      */
-    public static function branch()
+    public static function branch($dir = null)
     {
-        exec("git rev-parse --abbrev-ref HEAD", $branchName);
+        $path = VcsPHP::documentRoot($dir);
+        exec("cd $path && git rev-parse --abbrev-ref HEAD", $branchName);
         return current($branchName);
     }
 
     /**
      * Show the tag name
+     * @param string $dir Directory's path of project
      * @return string
      */
-    public static function tag()
+    public static function tag($dir = null)
     {
-        exec("git describe --tags --abbrev=0", $tagName);
+        $path = VcsPHP::documentRoot($dir);
+        exec("cd $path && git describe --tags --abbrev=0", $tagName);
         return array_pop($tagName);
     }
 
     /**
      * Show the revision code
      * @param bool $long Optional type of revision, defatul is short
+     * @param string $dir Directory's path of project
      * @return mixed
      */
-    public static function revision($long = false)
+    public static function revision($long = false, $dir = null)
     {
+        $path = VcsPHP::documentRoot($dir);
         $format = $long ? 'H' : 'h';
-        exec("git log -1 --pretty=format:'%$format'", $revision);
+        exec("cd $path && git log -1 --pretty=format:'%$format'", $revision);
         return current($revision);
     }
 
     /**
      * Show the date commit
      * @param string $format Optional format of date, default is american format '%Y-%m-%d %H:%M:%S'
-     * @return string
+     * @param string $dir Directory's path of project
+     * @return mixed
      */
-    public static function dateCommit($format = '%Y-%m-%d %H:%M:%S')
+    public static function dateCommit($format = '%Y-%m-%d %H:%M:%S', $dir = null)
     {
-        exec("git log -1 --pretty='format:%cd' --date=format:'$format'", $dateCommit);
+        $path = VcsPHP::documentRoot($dir);
+        exec("cd $path && git log -1 --pretty='format:%cd' --date=format:'$format'", $dateCommit);
         return current($dateCommit);
     }
 
     /**
      * Show the author commit
-     * @return string
+     * @param string $dir Directory's path of project
+     * @return mixed
      */
-    public static function authorCommit()
+    public static function authorCommit($dir = null)
     {
-        exec("git log -1 --pretty='format:%an'", $authorCommit);
+        $path = VcsPHP::documentRoot($dir);
+        exec("cd $path && git log -1 --pretty='format:%an'", $authorCommit);
         return current($authorCommit);
     }
 }
