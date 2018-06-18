@@ -85,14 +85,26 @@ class VcsPHP
     }
 
     /**
-     * Show the author commit
+     * Show the name of committer
      * @param string $dir Directory's path of project
      * @return mixed
      */
-    public static function authorCommit($dir = null)
+    public static function nameCommit($dir = null)
     {
         $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && git log -1 --pretty='format:%an'", $authorCommit);
+        exec("cd $path && git log -1 --pretty='format:%cn'", $authorCommit);
         return current($authorCommit);
+    }
+
+    /**
+     * Show the email of committer
+     * @param string $dir Directory's path of project
+     * @return mixed
+     */
+    public static function emailCommit($dir = null)
+    {
+        $path = VcsPHP::documentRoot($dir);
+        exec("cd $path && git log -1 --pretty='format:%ce'", $emailCommit);
+        return current($emailCommit);
     }
 }

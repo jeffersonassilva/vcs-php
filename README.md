@@ -44,15 +44,16 @@ echo VcsPHP::branch();
 
 ### Functions
 
-Method                                                                   | Description             | GIT/SVN
------------------------------------------------------------------------- | ----------------------- | :--------------------:
-`isGIT([string $dir = null])`                                            | Check it if vcs is GIT. | GIT
-`isSVN([string $dir = null])`                                            | Check it if vcs is SVN. | SVN
-`branch([string $dir = null])`                                           | Show the branch name    | GIT
-`tag([string $dir = null])`                                              | Show the tag name       | GIT
-`revision([bool $long = false], [string $dir = null])`                   | Show the revision code. | GIT
-`dateCommit(string $format = '%Y-%m-%d %H:%M:%S', [string $dir = null])` | Show the date commit.   | GIT
-`authorCommit([string $dir = null])`                                     | Show the author commit. | GIT
+Method                                                                   | Description                  | GIT/SVN
+------------------------------------------------------------------------ | ---------------------------- | :-------:
+`isGIT([string $dir = null])`                                            | Check it if vcs is GIT.      | GIT
+`isSVN([string $dir = null])`                                            | Check it if vcs is SVN.      | SVN
+`branch([string $dir = null])`                                           | Show the branch name         | GIT
+`tag([string $dir = null])`                                              | Show the tag name            | GIT
+`revision([bool $long = false], [string $dir = null])`                   | Show the revision code.      | GIT
+`dateCommit(string $format = '%Y-%m-%d %H:%M:%S', [string $dir = null])` | Show the date commit.        | GIT
+`nameCommit([string $dir = null])`                                       | Show the name of committer.  | GIT
+`emailCommit([string $dir = null])`                                      | Show the email of committer. | GIT
 
 Author
 -------
