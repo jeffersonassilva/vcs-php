@@ -54,6 +54,7 @@ Method                                                                   | Descr
 `dateCommit(string $format = '%Y-%m-%d %H:%M:%S', [string $dir = null])` | Show the date commit.        | GIT
 `nameCommit([string $dir = null])`                                       | Show the name of committer.  | GIT
 `emailCommit([string $dir = null])`                                      | Show the email of committer. | GIT
+`subject([string $dir = null])`                                          | Show the subject commit.     | GIT
 
 Author
 -------

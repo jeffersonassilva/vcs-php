@@ -107,4 +107,16 @@ class VcsPHP
         exec("cd $path && git log -1 --pretty='format:%ce'", $emailCommit);
         return current($emailCommit);
     }
+
+    /**
+     * Show the subject commit
+     * @param string $dir Directory's path of project
+     * @return mixed
+     */
+    public static function subject($dir = null)
+    {
+        $path = VcsPHP::documentRoot($dir);
+        exec("cd $path && git log -1 --pretty='format:%s'", $subject);
+        return current($subject);
+    }
 }
