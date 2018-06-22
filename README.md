@@ -48,7 +48,7 @@ Method                                                                   | Descr
 ------------------------------------------------------------------------ | ---------------------------- | :-------:
 `isGIT([string $dir = null])`                                            | Check it if vcs is GIT.      | GIT
 `isSVN([string $dir = null])`                                            | Check it if vcs is SVN.      | SVN
-`branch([string $dir = null])`                                           | Show the branch name         | GIT
+`branch([string $dir = null])`                                           | Show the branch name         | GIT/SVN
 `tag([string $dir = null])`                                              | Show the tag name            | GIT
 `revision([bool $long = false], [string $dir = null])`                   | Show the revision code.      | GIT
 `dateCommit(string $format = '%Y-%m-%d %H:%M:%S', [string $dir = null])` | Show the date commit.        | GIT
