@@ -46,8 +46,8 @@ echo VcsPHP::branch();
 
 Method                                                                   | Description                  | GIT/SVN
 ------------------------------------------------------------------------ | ---------------------------- | :-------:
-`isGIT([string $dir = null])`                                            | Check it if vcs is GIT.      | GIT
-`isSVN([string $dir = null])`                                            | Check it if vcs is SVN.      | SVN
+`isGIT([string $dir = null])`                                            | Check it if vcs is GIT.      | GIT/SVN
+`isSVN([string $dir = null])`                                            | Check it if vcs is SVN.      | GIT/SVN
 `branch([string $dir = null])`                                           | Show the branch name         | GIT/SVN
 `tag([string $dir = null])`                                              | Show the tag name            | GIT
 `revision([bool $long = false], [string $dir = null])`                   | Show the revision code.      | GIT/SVN
