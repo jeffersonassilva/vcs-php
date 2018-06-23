@@ -46,11 +46,11 @@ echo VcsPHP::branch();
 
 Method                                                                   | Description                  | GIT/SVN
 ------------------------------------------------------------------------ | ---------------------------- | :-------:
-`isGIT([string $dir = null])`                                            | Check it if vcs is GIT.      | GIT
-`isSVN([string $dir = null])`                                            | Check it if vcs is SVN.      | SVN
+`isGIT([string $dir = null])`                                            | Check it if vcs is GIT.      | GIT/SVN
+`isSVN([string $dir = null])`                                            | Check it if vcs is SVN.      | GIT/SVN
 `branch([string $dir = null])`                                           | Show the branch name         | GIT/SVN
 `tag([string $dir = null])`                                              | Show the tag name            | GIT
-`revision([bool $long = false], [string $dir = null])`                   | Show the revision code.      | GIT
+`revision([bool $long = false], [string $dir = null])`                   | Show the revision code.      | GIT/SVN
 `dateCommit(string $format = '%Y-%m-%d %H:%M:%S', [string $dir = null])` | Show the date commit.        | GIT
 `nameCommit([string $dir = null])`                                       | Show the name of committer.  | GIT
 `emailCommit([string $dir = null])`                                      | Show the email of committer. | GIT
