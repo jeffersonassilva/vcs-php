@@ -49,7 +49,7 @@ Method                                                                   | Descr
 `isGIT([string $dir = null])`                                            | Check it if vcs is GIT.      | GIT/SVN
 `isSVN([string $dir = null])`                                            | Check it if vcs is SVN.      | GIT/SVN
 `branch([string $dir = null])`                                           | Show the branch name         | GIT/SVN
-`tag([string $dir = null])`                                              | Show the tag name            | GIT
+`tag([string $dir = null])`                                              | Show the tag name            | GIT/SVN
 `revision([bool $long = false], [string $dir = null])`                   | Show the revision code.      | GIT/SVN
 `dateCommit(string $format = '%Y-%m-%d %H:%M:%S', [string $dir = null])` | Show the date commit.        | GIT
 `nameCommit([string $dir = null])`                                       | Show the name of committer.  | GIT
