@@ -95,10 +95,18 @@ class VcsPHP
      * @param string $dir Directory's path of project
      * @return mixed
      */
-    public static function dateCommit($format = '%Y-%m-%d %H:%M:%S', $dir = null)
+    public static function dateCommit($format = 'Y-m-d H:i:s', $dir = null)
     {
+        $dateCommit = array();
         $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && git log -1 --pretty='format:%cd' --date=format:'$format'", $dateCommit);
+        if (VcsPHP::isGIT($dir)) {
+            $format = VcsPHP::formatDateToGit($format);
+            exec("cd $path && git log -1 --pretty='format:%cd' --date=format:'$format'", $dateCommit);
+
+        } else if (VcsPHP::isSVN($dir)) {
+            exec("cd $path && svn info | grep 'Date' | awk '{print $4\" \"$5}'", $dateCommit);
+            $dateCommit = VcsPHP::formatDateToSvn($dateCommit, $format);
+        }
         return current($dateCommit);
     }
 
@@ -136,5 +144,31 @@ class VcsPHP
         $path = VcsPHP::documentRoot($dir);
         exec("cd $path && git log -1 --pretty='format:%s'", $subject);
         return current($subject);
+    }
+
+    /**
+     * @param $format
+     * @return mixed
+     */
+    private function formatDateToGit($format)
+    {
+        $format = str_replace('i', 'M', $format);
+        $format = str_replace('s', 'S', $format);
+        $format = preg_replace('/[a-zA-Z]/', '%$0', $format);
+        return $format;
+    }
+
+    /**
+     * @param $dateCommit
+     * @param $format
+     * @return array
+     */
+    private function formatDateToSvn($dateCommit, $format)
+    {
+        $arrayDate = array();
+        foreach ($dateCommit as $key => $dt) {
+            $arrayDate[$key] = date($format, strtotime($dt));
+        }
+        return $arrayDate;
     }
 }
