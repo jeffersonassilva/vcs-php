@@ -51,6 +51,7 @@ Method                                                             | Description
 `branch([string $dir = null])`                                     | Show the branch name        | BOTH
 `tag([string $dir = null])`                                        | Show the tag name           | BOTH
 `revision([bool $long = false], [string $dir = null])`             | Show the revision code      | BOTH
+`authorName([string $dir = null])`                                 | Show the name of author     | BOTH
 `dateCommit(string $format = 'Y-m-d H:i:s', [string $dir = null])` | Show the date commit        | BOTH
 `nameCommit([string $dir = null])`                                 | Show the name of committer  | GIT
 `emailCommit([string $dir = null])`                                | Show the email of committer | GIT

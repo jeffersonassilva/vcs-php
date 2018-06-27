@@ -111,6 +111,24 @@ class VcsPHP
     }
 
     /**
+     * Show the name of author
+     * @param string $dir Directory's path of project
+     * @return mixed
+     */
+    public static function authorName($dir = null)
+    {
+        $authorCommit = array();
+        $path = VcsPHP::documentRoot($dir);
+        if (VcsPHP::isGIT($dir)) {
+            exec("cd $path && git log -1 --pretty='format:%an'", $authorCommit);
+
+        } else if (VcsPHP::isSVN($dir)) {
+            exec("cd $path && svn info | grep 'Author' | awk '{print $4}'", $authorCommit);
+        }
+        return current($authorCommit);
+    }
+
+    /**
      * Show the name of committer
      * @param string $dir Directory's path of project
      * @return mixed
