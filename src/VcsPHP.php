@@ -90,42 +90,21 @@ class VcsPHP
     }
 
     /**
-     * Show the date commit
-     * @param string $format Optional format of date, default is american format '%Y-%m-%d %H:%M:%S'
-     * @param string $dir Directory's path of project
-     * @return mixed
-     */
-    public static function dateCommit($format = 'Y-m-d H:i:s', $dir = null)
-    {
-        $dateCommit = array();
-        $path = VcsPHP::documentRoot($dir);
-        if (VcsPHP::isGIT($dir)) {
-            $format = VcsPHP::formatDateToGit($format);
-            exec("cd $path && git log -1 --pretty='format:%cd' --date=format:'$format'", $dateCommit);
-
-        } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info | grep 'Date' | awk '{print $4\" \"$5}'", $dateCommit);
-            $dateCommit = VcsPHP::formatDateToSvn($dateCommit, $format);
-        }
-        return current($dateCommit);
-    }
-
-    /**
      * Show the name of author
      * @param string $dir Directory's path of project
      * @return mixed
      */
     public static function authorName($dir = null)
     {
-        $authorCommit = array();
+        $authorName = array();
         $path = VcsPHP::documentRoot($dir);
         if (VcsPHP::isGIT($dir)) {
-            exec("cd $path && git log -1 --pretty='format:%an'", $authorCommit);
+            exec("cd $path && git log -1 --pretty='format:%an'", $authorName);
 
         } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info | grep 'Author' | awk '{print $4}'", $authorCommit);
+            exec("cd $path && svn info | grep 'Author' | awk '{print $4}'", $authorName);
         }
-        return current($authorCommit);
+        return current($authorName);
     }
 
     /**
@@ -154,11 +133,11 @@ class VcsPHP
      * @param string $dir Directory's path of project
      * @return mixed
      */
-    public static function nameCommit($dir = null)
+    public static function committerName($dir = null)
     {
         $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && git log -1 --pretty='format:%cn'", $authorCommit);
-        return current($authorCommit);
+        exec("cd $path && git log -1 --pretty='format:%cn'", $committerName);
+        return current($committerName);
     }
 
     /**
@@ -166,11 +145,32 @@ class VcsPHP
      * @param string $dir Directory's path of project
      * @return mixed
      */
-    public static function emailCommit($dir = null)
+    public static function committerEmail($dir = null)
     {
         $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && git log -1 --pretty='format:%ce'", $emailCommit);
-        return current($emailCommit);
+        exec("cd $path && git log -1 --pretty='format:%ce'", $committerEmail);
+        return current($committerEmail);
+    }
+
+    /**
+     * Show the date of committer
+     * @param string $format Optional format of date, default is american format '%Y-%m-%d %H:%M:%S'
+     * @param string $dir Directory's path of project
+     * @return mixed
+     */
+    public static function committerDate($format = 'Y-m-d H:i:s', $dir = null)
+    {
+        $committerDate = array();
+        $path = VcsPHP::documentRoot($dir);
+        if (VcsPHP::isGIT($dir)) {
+            $format = VcsPHP::formatDateToGit($format);
+            exec("cd $path && git log -1 --pretty='format:%cd' --date=format:'$format'", $committerDate);
+
+        } else if (VcsPHP::isSVN($dir)) {
+            exec("cd $path && svn info | grep 'Date' | awk '{print $4\" \"$5}'", $committerDate);
+            $committerDate = VcsPHP::formatDateToSvn($committerDate, $format);
+        }
+        return current($committerDate);
     }
 
     /**
