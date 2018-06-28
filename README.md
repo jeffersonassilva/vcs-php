@@ -44,18 +44,19 @@ echo VcsPHP::branch();
 
 ### Functions
 
-Method                                                             | Description                 | GIT/SVN
------------------------------------------------------------------- | --------------------------- | :-------:
-`isGIT([string $dir = null])`                                      | Check it if vcs is GIT      | BOTH
-`isSVN([string $dir = null])`                                      | Check it if vcs is SVN      | BOTH
-`branch([string $dir = null])`                                     | Show the branch name        | BOTH
-`tag([string $dir = null])`                                        | Show the tag name           | BOTH
-`revision([bool $long = false], [string $dir = null])`             | Show the revision code      | BOTH
-`authorName([string $dir = null])`                                 | Show the name of author     | BOTH
-`dateCommit(string $format = 'Y-m-d H:i:s', [string $dir = null])` | Show the date commit        | BOTH
-`nameCommit([string $dir = null])`                                 | Show the name of committer  | GIT
-`emailCommit([string $dir = null])`                                | Show the email of committer | GIT
-`subject([string $dir = null])`                                    | Show the subject commit     | GIT
+Method                                                                | Description                 | GIT/SVN
+--------------------------------------------------------------------- | --------------------------- | :-------:
+`isGIT([string $dir = null])`                                         | Check it if vcs is GIT      | BOTH
+`isSVN([string $dir = null])`                                         | Check it if vcs is SVN      | BOTH
+`branch([string $dir = null])`                                        | Show the branch name        | BOTH
+`tag([string $dir = null])`                                           | Show the tag name           | BOTH
+`revision([bool $long = false], [string $dir = null])`                | Show the revision code      | BOTH
+`authorName([string $dir = null])`                                    | Show the name of author     | BOTH
+`authorDate(string $format = 'Y-m-d H:i:s', [string $dir = null])`    | Show the date of author     | BOTH
+`committerName([string $dir = null])`                                 | Show the name of committer  | GIT
+`committerEmail([string $dir = null])`                                | Show the email of committer | GIT
+`committerDate(string $format = 'Y-m-d H:i:s', [string $dir = null])` | Show the date of committer  | BOTH
+`subject([string $dir = null])`                                       | Show the subject commit     | GIT
 
 Author
 -------
