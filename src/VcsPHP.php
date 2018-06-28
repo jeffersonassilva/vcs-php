@@ -129,6 +129,27 @@ class VcsPHP
     }
 
     /**
+     * Show the author date
+     * @param string $format Format of date, default is american format '%Y-%m-%d %H:%M:%S'
+     * @param string $dir Directory's path of project
+     * @return mixed
+     */
+    public static function authorDate($format = 'Y-m-d H:i:s', $dir = null)
+    {
+        $authorDate = array();
+        $path = VcsPHP::documentRoot($dir);
+        if (VcsPHP::isGIT($dir)) {
+            $format = VcsPHP::formatDateToGit($format);
+            exec("cd $path && git log -1 --pretty='format:%ad' --date=format:'$format'", $authorDate);
+
+        } else if (VcsPHP::isSVN($dir)) {
+            exec("cd $path && svn info | grep 'Date' | awk '{print $4\" \"$5}'", $authorDate);
+            $authorDate = VcsPHP::formatDateToSvn($authorDate, $format);
+        }
+        return current($authorDate);
+    }
+
+    /**
      * Show the name of committer
      * @param string $dir Directory's path of project
      * @return mixed
