@@ -51,11 +51,12 @@ Method                                                                | Descript
 `branch([string $dir = null])`                                        | Show the branch name        | BOTH
 `tag([string $dir = null])`                                           | Show the tag name           | BOTH
 `revision([bool $long = false], [string $dir = null])`                | Show the revision code      | BOTH
-`authorName([string $dir = null])`                                    | Show the name of author     | BOTH
 `authorDate(string $format = 'Y-m-d H:i:s', [string $dir = null])`    | Show the date of author     | BOTH
+`authorName([string $dir = null])`                                    | Show the name of author     | BOTH
+`authorEmail([string $dir = null])`                                   | Show the email of author    | GIT
+`committerDate(string $format = 'Y-m-d H:i:s', [string $dir = null])` | Show the date of committer  | GIT
 `committerName([string $dir = null])`                                 | Show the name of committer  | GIT
 `committerEmail([string $dir = null])`                                | Show the email of committer | GIT
-`committerDate(string $format = 'Y-m-d H:i:s', [string $dir = null])` | Show the date of committer  | BOTH
 `subject([string $dir = null])`                                       | Show the subject commit     | GIT
 
 Author
