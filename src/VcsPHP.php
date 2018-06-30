@@ -104,7 +104,7 @@ class VcsPHP
             exec("cd $path && git log -1 --pretty='format:%ad' --date=format:'$format'", $authorDate);
 
         } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info | grep 'Date' | awk '{print $4\" \"$5}'", $authorDate);
+            exec("cd $path && svn info --show-item last-changed-date", $authorDate);
             $authorDate = VcsPHP::formatDateToSvn($authorDate, $format);
         }
         return current($authorDate);
