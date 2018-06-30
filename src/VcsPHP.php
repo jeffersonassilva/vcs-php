@@ -84,7 +84,7 @@ class VcsPHP
             exec("cd $path && git log -1 --pretty=format:'%$format'", $revision);
 
         } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info | grep 'Revision' | awk '{print $2}'", $revision);
+            exec("cd $path && svn info --show-item last-changed-revision", $revision);
         }
         return current($revision);
     }
