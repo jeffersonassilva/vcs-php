@@ -123,7 +123,7 @@ class VcsPHP
             exec("cd $path && git log -1 --pretty='format:%an'", $authorName);
 
         } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info | grep 'Author' | awk '{print $4}'", $authorName);
+            exec("cd $path && svn info --show-item last-changed-author", $authorName);
         }
         return current($authorName);
     }
