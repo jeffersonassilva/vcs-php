@@ -84,7 +84,7 @@ class VcsPHP
             exec("cd $path && git log -1 --pretty=format:'%$format'", $revision);
 
         } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info | grep 'Revision' | awk '{print $2}'", $revision);
+            exec("cd $path && svn info --show-item last-changed-revision", $revision);
         }
         return current($revision);
     }
@@ -104,7 +104,7 @@ class VcsPHP
             exec("cd $path && git log -1 --pretty='format:%ad' --date=format:'$format'", $authorDate);
 
         } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info | grep 'Date' | awk '{print $4\" \"$5}'", $authorDate);
+            exec("cd $path && svn info --show-item last-changed-date", $authorDate);
             $authorDate = VcsPHP::formatDateToSvn($authorDate, $format);
         }
         return current($authorDate);
@@ -123,7 +123,7 @@ class VcsPHP
             exec("cd $path && git log -1 --pretty='format:%an'", $authorName);
 
         } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info | grep 'Author' | awk '{print $4}'", $authorName);
+            exec("cd $path && svn info --show-item last-changed-author", $authorName);
         }
         return current($authorName);
     }
