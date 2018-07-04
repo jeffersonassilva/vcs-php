@@ -191,6 +191,18 @@ class VcsPHP
     }
 
     /**
+     * Show repository url
+     * @param string $dir Directory's path of project
+     * @return mixed
+     */
+    public static function repository($dir = null)
+    {
+        $path = VcsPHP::documentRoot($dir);
+        exec("cd $path && svn info --show-item url", $repositoryUrl);
+        return current($repositoryUrl);
+    }
+
+    /**
      * @param $format
      * @return mixed
      */
