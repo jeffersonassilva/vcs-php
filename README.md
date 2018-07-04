@@ -58,6 +58,7 @@ Method                                                                | Descript
 `committerName([string $dir = null])`                                 | Show the name of committer  | GIT
 `committerEmail([string $dir = null])`                                | Show the email of committer | GIT
 `subject([string $dir = null])`                                       | Show the subject commit     | GIT
+`repository([string $dir = null])`                                    | Show repository url         | SVN
 
 Author
 -------
