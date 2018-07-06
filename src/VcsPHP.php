@@ -203,6 +203,18 @@ class VcsPHP
     }
 
     /**
+     * Show repository url
+     * @param string $dir Directory's path of project
+     * @return mixed
+     */
+    public static function uuid($dir = null)
+    {
+        $path = VcsPHP::documentRoot($dir);
+        exec("cd $path && svn info --show-item repos-uuid", $uuid);
+        return current($uuid);
+    }
+
+    /**
      * @param $format
      * @return mixed
      */
