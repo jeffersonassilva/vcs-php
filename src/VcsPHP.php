@@ -197,8 +197,14 @@ class VcsPHP
      */
     public static function repository($dir = null)
     {
+        $repositoryUrl = array();
         $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && svn info --show-item url", $repositoryUrl);
+        if (VcsPHP::isGIT($dir)) {
+            exec("cd $path && git remote get-url origin", $repositoryUrl);
+
+        } else if (VcsPHP::isSVN($dir)) {
+            exec("cd $path && svn info --show-item url", $repositoryUrl);
+        }
         return current($repositoryUrl);
     }
 
