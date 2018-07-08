@@ -34,6 +34,24 @@ class VcsPHP
     }
 
     /**
+     * Show repository url
+     * @param string $dir Directory's path of project
+     * @return mixed
+     */
+    public static function repository($dir = null)
+    {
+        $repositoryUrl = array();
+        $path = VcsPHP::documentRoot($dir);
+        if (VcsPHP::isGIT($dir)) {
+            exec("cd $path && git remote get-url origin", $repositoryUrl);
+
+        } else if (VcsPHP::isSVN($dir)) {
+            exec("cd $path && svn info --show-item url", $repositoryUrl);
+        }
+        return current($repositoryUrl);
+    }
+
+    /**
      * Show the branch name
      * @param string $dir Directory's path of project
      * @return string
@@ -188,24 +206,6 @@ class VcsPHP
         $path = VcsPHP::documentRoot($dir);
         exec("cd $path && git log -1 --pretty='format:%s'", $subject);
         return current($subject);
-    }
-
-    /**
-     * Show repository url
-     * @param string $dir Directory's path of project
-     * @return mixed
-     */
-    public static function repository($dir = null)
-    {
-        $repositoryUrl = array();
-        $path = VcsPHP::documentRoot($dir);
-        if (VcsPHP::isGIT($dir)) {
-            exec("cd $path && git remote get-url origin", $repositoryUrl);
-
-        } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info --show-item url", $repositoryUrl);
-        }
-        return current($repositoryUrl);
     }
 
     /**

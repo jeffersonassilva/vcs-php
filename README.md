@@ -48,6 +48,7 @@ Method                                                                | Descript
 --------------------------------------------------------------------- | --------------------------- | :-------:
 `isGIT([string $dir = null])`                                         | Check it if vcs is GIT      | BOTH
 `isSVN([string $dir = null])`                                         | Check it if vcs is SVN      | BOTH
+`repository([string $dir = null])`                                    | Show repository url         | BOTH
 `branch([string $dir = null])`                                        | Show the branch name        | BOTH
 `tag([string $dir = null])`                                           | Show the tag name           | BOTH
 `revision([bool $long = false], [string $dir = null])`                | Show the revision code      | BOTH
@@ -58,7 +59,6 @@ Method                                                                | Descript
 `committerName([string $dir = null])`                                 | Show the name of committer  | GIT
 `committerEmail([string $dir = null])`                                | Show the email of committer | GIT
 `subject([string $dir = null])`                                       | Show the subject commit     | GIT
-`repository([string $dir = null])`                                    | Show repository url         | SVN
 `uuid([string $dir = null])`                                          | Show repository UUID        | SVN
 
 Author
