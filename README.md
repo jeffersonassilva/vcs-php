@@ -60,6 +60,7 @@ Method                                                                | Descript
 `committerEmail([string $dir = null])`                                | Show the email of committer | GIT
 `subject([string $dir = null])`                                       | Show the subject commit     | GIT
 `uuid([string $dir = null])`                                          | Show repository UUID        | SVN
+`nodeKind([string $dir = null])`                                      | Show the node kind          | SVN
 
 Author
 -------
