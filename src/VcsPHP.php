@@ -221,6 +221,18 @@ class VcsPHP
     }
 
     /**
+     * Show the node kind
+     * @param string $dir Directory's path of project
+     * @return mixed
+     */
+    public static function nodeKind($dir = null)
+    {
+        $path = VcsPHP::documentRoot($dir);
+        exec("cd $path && svn info --show-item kind", $nodeKind);
+        return current($nodeKind);
+    }
+
+    /**
      * @param $format
      * @return mixed
      */
