@@ -238,8 +238,7 @@ class VcsPHP
      */
     private function formatDateToGit($format)
     {
-        $format = str_replace('i', 'M', $format);
-        $format = str_replace('s', 'S', $format);
+        $format = str_replace(array('i', 's'), array('M', 'S'), $format);
         $format = preg_replace('/[a-zA-Z]/', '%$0', $format);
         return $format;
     }
