@@ -209,6 +209,18 @@ class VcsPHP
     }
 
     /**
+     * It show the quantity of commits
+     * @param string $dir Directory's path of project
+     * @return mixed
+     */
+    public static function commits($dir = null)
+    {
+        $path = VcsPHP::documentRoot($dir);
+        exec("cd $path && git rev-list --no-merges --count HEAD", $nodeKind);
+        return current($nodeKind);
+    }
+
+    /**
      * Show repository url
      * @param string $dir Directory's path of project
      * @return mixed
