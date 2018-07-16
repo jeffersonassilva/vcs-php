@@ -59,7 +59,7 @@ Method                                                                | Descript
 `committerName([string $dir = null])`                                 | Show the name of committer  | GIT
 `committerEmail([string $dir = null])`                                | Show the email of committer | GIT
 `subject([string $dir = null])`                                       | Show the subject commit     | GIT
-`commits([string $dir = null])`                                       | Show the quantity of commits | GIT
+`commits([bool $merges = false], [string $dir = null])`               | Show the quantity of commits | GIT
 `uuid([string $dir = null])`                                          | Show repository UUID        | SVN
 `nodeKind([string $dir = null])`                                      | Show the node kind          | SVN
 
