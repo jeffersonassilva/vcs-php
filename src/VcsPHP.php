@@ -213,10 +213,11 @@ class VcsPHP
      * @param string $dir Directory's path of project
      * @return mixed
      */
-    public static function commits($dir = null)
+    public static function commits($merges = false, $dir = null)
     {
+        $mergesParam = !$merges ? '--no-merges' : '';
         $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && git rev-list --no-merges --count HEAD", $nodeKind);
+        exec("cd $path && git rev-list $mergesParam --count HEAD", $nodeKind);
         return current($nodeKind);
     }
 
