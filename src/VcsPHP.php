@@ -217,8 +217,8 @@ class VcsPHP
     {
         $mergesParam = !$merges ? '--no-merges' : '';
         $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && git rev-list $mergesParam --count HEAD", $nodeKind);
-        return current($nodeKind);
+        exec("cd $path && git rev-list $mergesParam --count HEAD", $commits);
+        return current($commits);
     }
 
     /**
