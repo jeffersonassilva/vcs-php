@@ -8,7 +8,7 @@ class VcsPHP
      * @param string $dir Directory's path of project
      * @return string
      */
-    private function documentRoot($dir = null)
+    private static function documentRoot($dir = null)
     {
         return $dir ? $dir : $_SERVER["DOCUMENT_ROOT"];
     }
@@ -249,7 +249,7 @@ class VcsPHP
      * @param $format
      * @return mixed
      */
-    private function formatDateToGit($format)
+    private static function formatDateToGit($format)
     {
         $format = str_replace(array('i', 's'), array('M', 'S'), $format);
         $format = preg_replace('/[a-zA-Z]/', '%$0', $format);
@@ -261,7 +261,7 @@ class VcsPHP
      * @param $format
      * @return array
      */
-    private function formatDateToSvn($dateCommit, $format)
+    private static function formatDateToSvn($dateCommit, $format)
     {
         $arrayDate = array();
         foreach ($dateCommit as $key => $dt) {
