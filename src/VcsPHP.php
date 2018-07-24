@@ -269,4 +269,25 @@ class VcsPHP
         }
         return $arrayDate;
     }
+
+    /**
+     * @param $command
+     * @param $dir
+     * @return mixed
+     */
+    private static function run($command, $dir)
+    {
+        $path = VcsPHP::documentRoot($dir);
+        $cmd = new \stdClass();
+        $cmd->git = $command['git'];
+        $cmd->svn = $command['svn'];
+
+        if (VcsPHP::isGIT($dir))
+            exec("cd $path && $cmd->git", $data);
+
+        else if (VcsPHP::isSVN($dir))
+            exec("cd $path && $cmd->svn", $data);
+
+        return current($data);
+    }
 }
