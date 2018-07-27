@@ -58,15 +58,20 @@ class VcsPHP
      */
     public static function branch($dir = null)
     {
-        $branchName = array();
-        $path = VcsPHP::documentRoot($dir);
-        if (VcsPHP::isGIT($dir)) {
-            exec("cd $path && git rev-parse --abbrev-ref HEAD", $branchName);
+        return VcsPHP::run([
+            'git' => "git rev-parse --abbrev-ref HEAD",
+            'svn' => "svn info | grep '^URL:' | egrep -o '(branches)/[^/]+' | egrep -o '[^/]+$'"
+        ], $dir);
 
-        } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info | grep '^URL:' | egrep -o '(branches)/[^/]+' | egrep -o '[^/]+$'", $branchName);
-        }
-        return current($branchName);
+//        $branchName = array();
+//        $path = VcsPHP::documentRoot($dir);
+//        if (VcsPHP::isGIT($dir)) {
+//            exec("cd $path && git rev-parse --abbrev-ref HEAD", $branchName);
+//
+//        } else if (VcsPHP::isSVN($dir)) {
+//            exec("cd $path && svn info | grep '^URL:' | egrep -o '(branches)/[^/]+' | egrep -o '[^/]+$'", $branchName);
+//        }
+//        return current($branchName);
     }
 
     /**
