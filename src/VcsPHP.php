@@ -71,15 +71,20 @@ class VcsPHP
      */
     public static function tag($dir = null)
     {
-        $tagName = array();
-        $path = VcsPHP::documentRoot($dir);
-        if (VcsPHP::isGIT($dir)) {
-            exec("cd $path && git describe --tags --abbrev=0", $tagName);
+        return VcsPHP::run([
+            'git' => "git describe --tags --abbrev=0",
+            'svn' => "svn info | grep '^URL:' | egrep -o '(tags)/[^/]+' | egrep -o '[^/]+$'"
+        ], $dir);
 
-        } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info | grep '^URL:' | egrep -o '(tags)/[^/]+' | egrep -o '[^/]+$'", $tagName);
-        }
-        return current($tagName);
+//        $tagName = array();
+//        $path = VcsPHP::documentRoot($dir);
+//        if (VcsPHP::isGIT($dir)) {
+//            exec("cd $path && git describe --tags --abbrev=0", $tagName);
+//
+//        } else if (VcsPHP::isSVN($dir)) {
+//            exec("cd $path && svn info | grep '^URL:' | egrep -o '(tags)/[^/]+' | egrep -o '[^/]+$'", $tagName);
+//        }
+//        return current($tagName);
     }
 
     /**
