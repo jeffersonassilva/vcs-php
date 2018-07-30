@@ -85,16 +85,11 @@ class VcsPHP
      */
     public static function revision($long = false, $dir = null)
     {
-        $revision = array();
-        $path = VcsPHP::documentRoot($dir);
         $format = $long ? 'H' : 'h';
-        if (VcsPHP::isGIT($dir)) {
-            exec("cd $path && git log -1 --pretty=format:'%$format'", $revision);
-
-        } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info --show-item last-changed-revision", $revision);
-        }
-        return current($revision);
+        return VcsPHP::run([
+            'git' => "git log -1 --pretty=format:'%$format'",
+            'svn' => "svn info --show-item last-changed-revision"
+        ], $dir);
     }
 
     /**
