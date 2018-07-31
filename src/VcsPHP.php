@@ -120,15 +120,20 @@ class VcsPHP
      */
     public static function authorName($dir = null)
     {
-        $authorName = array();
-        $path = VcsPHP::documentRoot($dir);
-        if (VcsPHP::isGIT($dir)) {
-            exec("cd $path && git log -1 --pretty='format:%an'", $authorName);
+        return VcsPHP::run([
+            'git' => "git log -1 --pretty='format:%an'",
+            'svn' => "svn info --show-item last-changed-author"
+        ], $dir);
 
-        } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info --show-item last-changed-author", $authorName);
-        }
-        return current($authorName);
+//        $authorName = array();
+//        $path = VcsPHP::documentRoot($dir);
+//        if (VcsPHP::isGIT($dir)) {
+//            exec("cd $path && git log -1 --pretty='format:%an'", $authorName);
+//
+//        } else if (VcsPHP::isSVN($dir)) {
+//            exec("cd $path && svn info --show-item last-changed-author", $authorName);
+//        }
+//        return current($authorName);
     }
 
     /**
