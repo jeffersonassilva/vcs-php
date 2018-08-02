@@ -133,9 +133,10 @@ class VcsPHP
      */
     public static function authorEmail($dir = null)
     {
-        $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && git log -1 --pretty='format:%ae'", $authorEmail);
-        return current($authorEmail);
+        return VcsPHP::run([
+            'git' => "git log -1 --pretty='format:%ae'",
+            'svn' => null
+        ], $dir);
     }
 
     /**
