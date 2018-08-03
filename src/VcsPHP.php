@@ -152,11 +152,6 @@ class VcsPHP
             'git' => "git log -1 --pretty='format:%cd' --date=format:'$format'",
             'svn' => null
         ], $dir);
-
-//        $path = VcsPHP::documentRoot($dir);
-//        $format = VcsPHP::formatDateToGit($format);
-//        exec("cd $path && git log -1 --pretty='format:%cd' --date=format:'$format'", $committerDate);
-//        return current($committerDate);
     }
 
     /**
