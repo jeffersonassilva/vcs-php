@@ -161,9 +161,10 @@ class VcsPHP
      */
     public static function committerName($dir = null)
     {
-        $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && git log -1 --pretty='format:%cn'", $committerName);
-        return current($committerName);
+        return VcsPHP::run([
+            'git' => "git log -1 --pretty='format:%cn'",
+            'svn' => null
+        ], $dir);
     }
 
     /**
