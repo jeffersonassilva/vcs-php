@@ -178,10 +178,6 @@ class VcsPHP
             'git' => "git log -1 --pretty='format:%ce'",
             'svn' => null
         ], $dir);
-
-//        $path = VcsPHP::documentRoot($dir);
-//        exec("cd $path && git log -1 --pretty='format:%ce'", $committerEmail);
-//        return current($committerEmail);
     }
 
     /**
