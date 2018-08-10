@@ -187,9 +187,10 @@ class VcsPHP
      */
     public static function subject($dir = null)
     {
-        $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && git log -1 --pretty='format:%s'", $subject);
-        return current($subject);
+        return VcsPHP::run([
+            'git' => "git log -1 --pretty='format:%s'",
+            'svn' => null
+        ], $dir);
     }
 
     /**
