@@ -214,9 +214,10 @@ class VcsPHP
      */
     public static function uuid($dir = null)
     {
-        $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && svn info --show-item repos-uuid", $uuid);
-        return current($uuid);
+        return VcsPHP::run([
+            'git' => null,
+            'svn' => "svn info --show-item repos-uuid"
+        ], $dir);
     }
 
     /**
