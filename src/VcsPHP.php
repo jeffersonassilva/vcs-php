@@ -201,9 +201,15 @@ class VcsPHP
     public static function commits($merges = false, $dir = null)
     {
         $mergesParam = !$merges ? '--no-merges' : '';
-        $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && git rev-list $mergesParam --count HEAD", $commits);
-        return current($commits);
+        return VcsPHP::run([
+            'git' => "git rev-list $mergesParam --count HEAD",
+            'svn' => null
+        ], $dir);
+
+//        $mergesParam = !$merges ? '--no-merges' : '';
+//        $path = VcsPHP::documentRoot($dir);
+//        exec("cd $path && git rev-list $mergesParam --count HEAD", $commits);
+//        return current($commits);
     }
 
     /**
