@@ -227,9 +227,14 @@ class VcsPHP
      */
     public static function nodeKind($dir = null)
     {
-        $path = VcsPHP::documentRoot($dir);
-        exec("cd $path && svn info --show-item kind", $nodeKind);
-        return current($nodeKind);
+        return VcsPHP::run([
+            'git' => null,
+            'svn' => "svn info --show-item kind"
+        ], $dir);
+
+//        $path = VcsPHP::documentRoot($dir);
+//        exec("cd $path && svn info --show-item kind", $nodeKind);
+//        return current($nodeKind);
     }
 
     /**
