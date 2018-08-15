@@ -231,10 +231,6 @@ class VcsPHP
             'git' => null,
             'svn' => "svn info --show-item kind"
         ], $dir);
-
-//        $path = VcsPHP::documentRoot($dir);
-//        exec("cd $path && svn info --show-item kind", $nodeKind);
-//        return current($nodeKind);
     }
 
     /**
