@@ -40,15 +40,20 @@ class VcsPHP
      */
     public static function repository($dir = null)
     {
-        $repositoryUrl = array();
-        $path = VcsPHP::documentRoot($dir);
-        if (VcsPHP::isGIT($dir)) {
-            exec("cd $path && git remote get-url origin", $repositoryUrl);
+        return VcsPHP::run([
+            'git' => "git remote get-url origin",
+            'svn' => "svn info --show-item url"
+        ], $dir);
 
-        } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info --show-item url", $repositoryUrl);
-        }
-        return current($repositoryUrl);
+//        $repositoryUrl = array();
+//        $path = VcsPHP::documentRoot($dir);
+//        if (VcsPHP::isGIT($dir)) {
+//            exec("cd $path && git remote get-url origin", $repositoryUrl);
+//
+//        } else if (VcsPHP::isSVN($dir)) {
+//            exec("cd $path && svn info --show-item url", $repositoryUrl);
+//        }
+//        return current($repositoryUrl);
     }
 
     /**
