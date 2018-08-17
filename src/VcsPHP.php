@@ -44,16 +44,6 @@ class VcsPHP
             'git' => "git remote get-url origin",
             'svn' => "svn info --show-item url"
         ], $dir);
-
-//        $repositoryUrl = array();
-//        $path = VcsPHP::documentRoot($dir);
-//        if (VcsPHP::isGIT($dir)) {
-//            exec("cd $path && git remote get-url origin", $repositoryUrl);
-//
-//        } else if (VcsPHP::isSVN($dir)) {
-//            exec("cd $path && svn info --show-item url", $repositoryUrl);
-//        }
-//        return current($repositoryUrl);
     }
 
     /**
