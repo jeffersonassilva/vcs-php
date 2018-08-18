@@ -95,17 +95,11 @@ class VcsPHP
      */
     public static function authorDate($format = 'Y-m-d H:i:s', $dir = null)
     {
-        $authorDate = array();
-        $path = VcsPHP::documentRoot($dir);
-        if (VcsPHP::isGIT($dir)) {
-            $format = VcsPHP::formatDateToGit($format);
-            exec("cd $path && git log -1 --pretty='format:%ad' --date=format:'$format'", $authorDate);
-
-        } else if (VcsPHP::isSVN($dir)) {
-            exec("cd $path && svn info --show-item last-changed-date", $authorDate);
-            $authorDate = VcsPHP::formatDateToSvn($authorDate, $format);
-        }
-        return current($authorDate);
+        $formatGit = VcsPHP::formatDateToGit($format);
+        return VcsPHP::run([
+            'git' => "git log -1 --pretty='format:%ad' --date=format:'$formatGit'",
+            'svn' => "svn info --show-item last-changed-date"
+        ], $dir, $format);
     }
 
     /**
@@ -256,21 +250,24 @@ class VcsPHP
     /**
      * @param $command
      * @param $dir
+     * @param string $format
      * @return mixed
      */
-    private static function run($command, $dir)
+    private static function run($command, $dir, $format = '')
     {
         $path = VcsPHP::documentRoot($dir);
         $cmd = new \stdClass();
         $cmd->git = $command['git'];
         $cmd->svn = $command['svn'];
 
-        if (VcsPHP::isGIT($dir))
+        if (VcsPHP::isGIT($dir)) {
             exec("cd $path && $cmd->git", $data);
-
-        else if (VcsPHP::isSVN($dir))
+        } elseif (VcsPHP::isSVN($dir)) {
             exec("cd $path && $cmd->svn", $data);
-
+            if(!empty($format)){
+                $data = VcsPHP::formatDateToSvn($data, $format);
+            }
+        }
         return current($data);
     }
 }
