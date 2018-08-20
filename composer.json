@@ -13,9 +13,19 @@
   "require": {
     "php": ">5.6"
   },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "*"
+  },
   "autoload": {
     "psr-4": {
       "jeffersonassilva\\VcsPHP\\": "src/"
     }
+  },
+  "scripts": {
+    "complete-check": ["@check-cs-psr2", "@check-cs-psr12"],
+    "check-cs-psr2": "./vendor/bin/phpcs --standard=PSR2 --colors src/",
+    "check-cs-psr12": "./vendor/bin/phpcs --standard=PSR12 --colors src/",
+    "fix-cs-psr2": "./vendor/bin/phpcbf --standard=PSR2 src/ --colors",
+    "fix-cs-psr12": "./vendor/bin/phpcbf --standard=PSR12 src/ --colors"
   }
 }

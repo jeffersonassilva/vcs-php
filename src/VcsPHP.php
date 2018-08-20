@@ -264,7 +264,7 @@ class VcsPHP
             exec("cd $path && $cmd->git", $data);
         } elseif (VcsPHP::isSVN($dir)) {
             exec("cd $path && $cmd->svn", $data);
-            if(!empty($format)){
+            if (!empty($format)) {
                 $data = VcsPHP::formatDateToSvn($data, $format);
             }
         }
