@@ -3,6 +3,7 @@
   "type": "library",
   "description": "Public VCS",
   "keywords": ["vcs", "php", "version"],
+  "license": "MIT",
   "authors": [
     {
       "name": "Jefferson Alessandro",
