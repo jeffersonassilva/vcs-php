@@ -249,6 +249,18 @@ class VcsPHP
 
     /**
      * @param $command
+     * @return \stdClass
+     */
+    private static function cmds($command)
+    {
+        $cmd = new \stdClass();
+        $cmd->git = $command['git'];
+        $cmd->svn = $command['svn'];
+        return $cmd;
+    }
+
+    /**
+     * @param $command
      * @param $dir
      * @param string $format
      * @return mixed
@@ -256,9 +268,7 @@ class VcsPHP
     private static function run($command, $dir, $format = '')
     {
         $path = VcsPHP::documentRoot($dir);
-        $cmd = new \stdClass();
-        $cmd->git = $command['git'];
-        $cmd->svn = $command['svn'];
+        $cmd = VcsPHP::cmds($command);
 
         if (VcsPHP::isGIT($dir)) {
             exec("cd $path && $cmd->git", $data);
