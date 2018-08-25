@@ -124,7 +124,6 @@ class VcsPHP
     {
         return VcsPHP::run([
             'git' => "git log -1 --pretty='format:%ae'",
-            'svn' => null
         ], $dir);
     }
 
@@ -139,7 +138,6 @@ class VcsPHP
         $format = VcsPHP::formatDateToGit($format);
         return VcsPHP::run([
             'git' => "git log -1 --pretty='format:%cd' --date=format:'$format'",
-            'svn' => null
         ], $dir);
     }
 
@@ -152,7 +150,6 @@ class VcsPHP
     {
         return VcsPHP::run([
             'git' => "git log -1 --pretty='format:%cn'",
-            'svn' => null
         ], $dir);
     }
 
@@ -165,7 +162,6 @@ class VcsPHP
     {
         return VcsPHP::run([
             'git' => "git log -1 --pretty='format:%ce'",
-            'svn' => null
         ], $dir);
     }
 
@@ -178,7 +174,6 @@ class VcsPHP
     {
         return VcsPHP::run([
             'git' => "git log -1 --pretty='format:%s'",
-            'svn' => null
         ], $dir);
     }
 
@@ -192,7 +187,6 @@ class VcsPHP
         $mergesParam = !$merges ? '--no-merges' : '';
         return VcsPHP::run([
             'git' => "git rev-list $mergesParam --count HEAD",
-            'svn' => null
         ], $dir);
     }
 
@@ -204,7 +198,6 @@ class VcsPHP
     public static function uuid($dir = null)
     {
         return VcsPHP::run([
-            'git' => null,
             'svn' => "svn info --show-item repos-uuid"
         ], $dir);
     }
@@ -217,7 +210,6 @@ class VcsPHP
     public static function nodeKind($dir = null)
     {
         return VcsPHP::run([
-            'git' => null,
             'svn' => "svn info --show-item kind"
         ], $dir);
     }
@@ -254,8 +246,8 @@ class VcsPHP
     private static function cmds($command)
     {
         $cmd = new \stdClass();
-        $cmd->git = $command['git'];
-        $cmd->svn = $command['svn'];
+        $cmd->git = isset($command['git']) ? $command['git'] : null;
+        $cmd->svn = isset($command['svn']) ? $command['svn'] : null;
         return $cmd;
     }
 
