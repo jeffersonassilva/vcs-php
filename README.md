@@ -81,6 +81,10 @@ Support
 
 If you are having problems, send a mail to jeffersonassilva@gmail.com.
 
+License
+-------
+
+The scripts and documentation in this project are released under the [MIT License](LICENSE).
 
 [Composer]: https://getcomposer.org
 [issue tracker]: https://github.com/jeffersonassilva/vcs-php/issues
